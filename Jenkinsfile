@@ -3,29 +3,31 @@ pipeline{
     stages {
         stage ("Installing Maven and building app"){
             script{
+              sh '''
                 sudo apt update
 
-                //# Install OpenJDK (if not already installed)
-                //# sudo apt install -y default-jdk
+                # Install OpenJDK (if not already installed)
+                # sudo apt install -y default-jdk
 
-                //# Download Apache Maven
+                # Download Apache Maven
                 wget -P /tmp https://apache.osuosl.org/maven/maven-3/3.8.5/binaries/apache-maven-3.8.5-bin.tar.gz
 
-                //# Extract the Maven archive
+                # Extract the Maven archive
                 sudo tar xf /tmp/apache-maven-3.8.5-bin.tar.gz -C /opt
 
-                //# Create a symbolic link to make it easier to reference
+                # Create a symbolic link to make it easier to reference
                 sudo ln -s /opt/apache-maven-3.8.5 /opt/maven
 
-               // # Add Maven bin directory to the system PATH
+                # Add Maven bin directory to the system PATH
                 echo 'export PATH=$PATH:/opt/maven/bin' >> ~/.bashrc
                 source ~/.bashrc
 
-                //# Verify the installation
+                # Verify the installation
                 mvn --version
 
-                //# Clean up
+                # Clean up
                 rm /tmp/apache-maven-3.8.5-bin.tar.gz
+              '''
             }
             }
         stage ( "Cloning Project Git Repo an Building"){
