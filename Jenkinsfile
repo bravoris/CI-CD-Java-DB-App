@@ -11,7 +11,7 @@ pipeline {
                         sudo tar xf /tmp/apache-maven-3.8.8-bin.tar.gz -C /opt
                         sudo ln -s /opt/apache-maven-3.8.8 /opt/maven
                         echo 'export PATH=$PATH:/opt/maven/bin' >> ~/.bashrc
-                        source ~/.bashrc
+                        . ~/.bashrc
                         mvn --version
                         rm /tmp/apache-maven-3.8.8-bin.tar.gz
                     '''
