@@ -7,13 +7,13 @@ pipeline {
                 script {
                     sh '''
                         sudo apt update
-                        wget -P /tmp https://apache.osuosl.org/maven/maven-3/3.8.5/binaries/apache-maven-3.8.5-bin.tar.gz
-                        sudo tar xf /tmp/apache-maven-3.8.5-bin.tar.gz -C /opt
-                        sudo ln -s /opt/apache-maven-3.8.5 /opt/maven
+                        wget -P /tmp https://dlcdn.apache.org/maven/maven-3/3.8.8/binaries/apache-maven-3.8.8-bin.tar.gz
+                        sudo tar xf /tmp/apache-maven-3.8.8-bin.tar.gz -C /opt
+                        sudo ln -s /opt/apache-maven-3.8.8 /opt/maven
                         echo 'export PATH=$PATH:/opt/maven/bin' >> ~/.bashrc
                         source ~/.bashrc
                         mvn --version
-                        rm /tmp/apache-maven-3.8.5-bin.tar.gz
+                        rm /tmp/apache-maven-3.8.8-bin.tar.gz
                     '''
                 }
             }
